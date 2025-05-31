@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script defer src="./script/main.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <div
+      id="codeMatrix"
+      x-data="{matrix:generateMatrix(), code:generateCodes()}"
+    >
+      <button x-on:click="matrix=generateMatrix(); code=generateCodes()">
+        Restart
+      </button>
+      <!-- Code matrix is 6x6 -->
+      <table>
+        <template x-for="row in 6">
+          <tr>
+            <template x-for="column in 6">
+              <!-- 
+                This horribleness is courtesy of the Alpine.js maintainers, 
+                who to my knowledge thing indexing from 1 in loops is normal
+              -->
+              <th x-text="matrix[row-1][column-1]"></th>
+            </template>
+          </tr>
+        </template>
+      </table>
+      <div>
+        <span>Codes</span>
+        <br />
+        <template x-for="codeIndex in code.length">
+          <div><span x-text="code[codeIndex-1]"></span> <br /></div>
+        </template>
+      </div>
+    </div>
+  </body>
+</html>
