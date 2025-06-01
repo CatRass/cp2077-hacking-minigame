@@ -31,6 +31,7 @@
                 x-data="{clicked:'clickedFalse'}"
                 x-on:click="clickedCode(matrix[row-1][column-1]); clicked='clickedTrue';"
                 x-bind:class="clicked"
+                class="unselectable"
               ></th>
             </template>
           </tr>

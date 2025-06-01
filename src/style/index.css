@@ -8,6 +8,15 @@
   src: url(./fonts/Rajdhani/Rajdhani-Regular.ttf);
 }
 
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 th.clickedFalse:hover {
   cursor: pointer;
   box-shadow: 1px 0 1px 3px var(--select);
@@ -20,13 +29,6 @@ th.clickedFalse:hover {
 }
 
 th.clickedFalse {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
   color: var(--foreground);
   font-family: Rajdhani;
 
