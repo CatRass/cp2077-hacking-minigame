@@ -1,0 +1,34 @@
+:root {
+  --foreground: #d7f266;
+  --select: #77d6da;
+}
+
+@font-face {
+  font-family: Rajdhani;
+  src: url(./fonts/Rajdhani/Rajdhani-Regular.ttf);
+}
+
+th.clickedFalse:hover {
+  cursor: pointer;
+  box-shadow: 1px 0 1px 3px var(--select);
+  color: var(--select);
+}
+
+.clickedTrue {
+  color: grey;
+  font-family: Rajdhani;
+}
+
+th.clickedFalse {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  color: var(--foreground);
+  font-family: Rajdhani;
+
+  padding: 0.5rem;
+}

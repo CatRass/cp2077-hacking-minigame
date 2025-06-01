@@ -6,6 +6,7 @@
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+    <link rel="stylesheet" href="./style/index.css" />
   </head>
 
   <body>
@@ -23,9 +24,14 @@
             <template x-for="column in 6">
               <!-- 
                 This horribleness is courtesy of the Alpine.js maintainers, 
-                who to my knowledge thing indexing from 1 in loops is normal
+                who to my knowledge think indexing from 1 in loops is normal
               -->
-              <th x-text="matrix[row-1][column-1]"></th>
+              <th
+                x-text="matrix[row-1][column-1]"
+                x-data="{clicked:'clickedFalse'}"
+                x-on:click="clickedCode(matrix[row-1][column-1]); clicked='clickedTrue';"
+                x-bind:class="clicked"
+              ></th>
             </template>
           </tr>
         </template>

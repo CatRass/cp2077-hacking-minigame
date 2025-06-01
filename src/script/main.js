@@ -38,3 +38,7 @@ function generateCodes() {
   //   console.log(codes);
   return codes;
 }
+
+function clickedCode(matrixVal) {
+  console.log("Clicked:", matrixVal);
+}
