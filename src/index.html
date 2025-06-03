@@ -10,15 +10,12 @@
   </head>
 
   <body>
-    <div
-      id="codeMatrix"
-      x-data="{matrix:generateMatrix(), code:generateCodes()}"
-    >
+    <div x-data="{matrix:generateMatrix(), code:generateCodes()}">
       <button x-on:click="matrix=generateMatrix(); code=generateCodes()">
         Restart
       </button>
       <!-- Code matrix is 6x6 -->
-      <table>
+      <table id="codeMatrix">
         <template x-for="row in 6">
           <tr>
             <template x-for="column in 6">
@@ -27,17 +24,16 @@
                 who to my knowledge think indexing from 1 in loops is normal
               -->
               <th
-                x-text="matrix[row-1][column-1]"
-                x-data="{clicked:'clickedFalse'}"
-                x-on:click="clickedCode(matrix[row-1][column-1]); clicked='clickedTrue';"
-                x-bind:class="clicked"
+                x-text="matrix[row-1][column-1][0]"
+                x-on:click="clickedCode(matrix[row-1][column-1]); matrix[row-1][column-1][1]='clickedTrue';"
+                x-bind:class="matrix[row-1][column-1][1]"
                 class="unselectable"
               ></th>
             </template>
           </tr>
         </template>
       </table>
-      <div>
+      <div id="sequenceDisplay">
         <span>Codes</span>
         <br />
         <template x-for="codeIndex in code.length">
