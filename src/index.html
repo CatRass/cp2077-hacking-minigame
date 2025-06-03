@@ -10,7 +10,9 @@
   </head>
 
   <body>
-    <div x-data="{matrix:generateMatrix(), code:generateCodes()}">
+    <div
+      x-data="{matrix:generateMatrix(), code:generateCodes(), currentlyHovering:''}"
+    >
       <button x-on:click="matrix=generateMatrix(); code=generateCodes()">
         Restart
       </button>
@@ -26,6 +28,8 @@
               <th
                 x-text="matrix[row-1][column-1][0]"
                 x-on:click="clickedCode(matrix[row-1][column-1]); matrix[row-1][column-1][1]='clickedTrue';"
+                x-on:mouseover="currentlyHovering=matrix[row-1][column-1][0]"
+                x-on:mouseleave="currentlyHovering=''"
                 x-bind:class="matrix[row-1][column-1][1]"
                 class="unselectable"
               ></th>
@@ -34,11 +38,16 @@
         </template>
       </table>
       <div id="sequenceDisplay">
-        <span>Codes</span>
+        <span>Sequence Required to Upload</span>
         <br />
         <template x-for="codeIndex in code.length">
           <div><span x-text="code[codeIndex-1]"></span> <br /></div>
         </template>
+      </div>
+      <div id="bufferDisplay">
+        <span>BUFFER</span>
+        <br />
+        <span x-text="currentlyHovering"></span>
       </div>
     </div>
   </body>

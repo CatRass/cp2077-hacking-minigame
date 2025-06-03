@@ -1,11 +1,16 @@
 :root {
   --foreground: #d7f266;
+  --background: #211e29;
   --select: #77d6da;
 }
 
 @font-face {
   font-family: Rajdhani;
   src: url(./fonts/Rajdhani/Rajdhani-Regular.ttf);
+}
+
+table#codeMatrix {
+  background-color: var(--background);
 }
 
 .unselectable {
@@ -26,6 +31,8 @@ th.clickedFalse:hover {
 .clickedTrue {
   color: grey;
   font-family: Rajdhani;
+
+  padding: 0.5rem;
 }
 
 th.clickedFalse {
