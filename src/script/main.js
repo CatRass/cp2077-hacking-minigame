@@ -43,6 +43,6 @@ function generateCodes() {
   return codes;
 }
 
-function clickedCode(matrixVal) {
-  console.log("Clicked:", matrixVal[0]);
+function clickedCode(matrixVal, row, col) {
+  console.log("Clicked:", matrixVal[0], "at (", row, ",", col, ")");
 }
