@@ -1,12 +1,13 @@
 :root {
   --foreground: #d7f266;
   --background: #211e29;
+  --top-highlight: #272b37;
   --select: #77d6da;
 }
 
 @font-face {
   font-family: Rajdhani;
-  src: url(./fonts/Rajdhani/Rajdhani-Regular.ttf);
+  src: url(./fonts/Rajdhani/Rajdhani-Light.ttf);
 }
 
 table#codeMatrix {
@@ -24,7 +25,7 @@ table#codeMatrix {
 
 th.clickedFalse:hover {
   cursor: pointer;
-  box-shadow: 1px 0 1px 3px var(--select);
+  box-shadow: 0 0 0 3px var(--select);
   color: var(--select);
 }
 
