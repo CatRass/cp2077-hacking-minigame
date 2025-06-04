@@ -10,13 +10,12 @@ function generateMatrix() {
 
   for (let row = 0; row < 6; row++) {
     matrix.push([]);
-    // In each index of value, we will have the matrix code, and that
-    // cells 'click state'.
-    // So one cell will look like: ["E9", "clickedFalse"]
+    // Each matrix entry stores the cell value and it's state.
+    // State is between 'clickedTrue' and 'clickedFalse' (default)
     for (let col = 0; col < 6; col++) {
       randomIndex = rand(0, pool.length);
       randomVal = pool[randomIndex];
-      matrix[row].push([randomVal, "clickedFalse"]);
+      matrix[row].push({ cell: randomVal, state: "clickedFalse" });
     }
   }
 
@@ -44,5 +43,5 @@ function generateCodes() {
 }
 
 function clickedCode(matrixVal, row, col) {
-  console.log("Clicked:", matrixVal[0], "at (", row, ",", col, ")");
+  console.log("Clicked:", matrixVal["cell"], "at (", row, ",", col, ")");
 }
