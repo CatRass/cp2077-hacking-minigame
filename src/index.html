@@ -10,12 +10,8 @@
   </head>
 
   <body>
-    <div
-      x-data="{matrix:generateMatrix(), code:generateCodes(), currentlyHovering:''}"
-    >
-      <button x-on:click="matrix=generateMatrix(); code=generateCodes()">
-        Restart
-      </button>
+    <div x-data="{genData:generateData(), currentlyHovering:''}">
+      <button x-on:click="genData=generateData()">Restart</button>
       <!-- Code matrix is 6x6 -->
       <table id="codeMatrix">
         <template x-for="row in 6">
@@ -26,19 +22,19 @@
                 who to my knowledge think indexing from 1 in loops is normal
               -->
               <th
-                x-text="matrix[row-1][column-1]['cell']"
+                x-text="genData['matrix'][row-1][column-1]['cell']"
                 x-on:click="
-                    matrix[row-1][column-1]['state'] != 'clickedTrue' ?
+                    genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
                     (
-                        clickedCode(matrix[row-1][column-1], row-1, column-1),
-                        matrix[row-1][column-1]['state']='clickedTrue'
+                        clickedCode(genData['matrix'][row-1][column-1], row-1, column-1),
+                        genData['matrix'][row-1][column-1]['state']='clickedTrue'
                     )
                     :
                     {}
                 "
-                x-on:mouseover="currentlyHovering=matrix[row-1][column-1]['cell']"
+                x-on:mouseover="currentlyHovering=genData['matrix'][row-1][column-1]['cell']"
                 x-on:mouseleave="currentlyHovering=''"
-                x-bind:class="matrix[row-1][column-1]['state']"
+                x-bind:class="genData['matrix'][row-1][column-1]['state']"
                 class="unselectable"
               ></th>
             </template>
@@ -48,8 +44,8 @@
       <div id="sequenceDisplay">
         <span>Sequence Required to Upload</span>
         <br />
-        <template x-for="codeIndex in code.length">
-          <div><span x-text="code[codeIndex-1]"></span> <br /></div>
+        <template x-for="codeIndex in genData['codes'].length">
+          <div><span x-text="genData['codes'][codeIndex-1]"></span> <br /></div>
         </template>
       </div>
       <div id="bufferDisplay">

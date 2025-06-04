@@ -42,6 +42,18 @@ function generateCodes() {
   return codes;
 }
 
+function generateData() {
+  generatedCodes = generateCodes();
+  generatedMatrix = generateMatrix();
+
+  returnObj = {
+    matrix: generatedMatrix,
+    codes: generatedCodes,
+  };
+
+  return returnObj;
+}
+
 function clickedCode(matrixVal, row, col) {
   console.log("Clicked:", matrixVal["cell"], "at (", row, ",", col, ")");
 }
