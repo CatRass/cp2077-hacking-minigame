@@ -6,19 +6,20 @@ var pool = ["E9", "BD", "1C", "55", "7A"];
 
 // Function to generate code and click matrix
 function generateMatrix(codes) {
-  var matrix = new Array(6).fill(Array(6));
+  var matrix = [];
 
   for (let row = 0; row < 6; row++) {
     // Each matrix entry stores the cell value and it's state.
     // State is between 'clickedTrue' and 'clickedFalse' (default)
+    matrix.push([]);
     for (let col = 0; col < 6; col++) {
       randomIndex = rand(0, pool.length);
       randomVal = pool[randomIndex];
-      matrix[row][col] = { cell: randomVal, state: "clickedFalse" };
+      matrix[row].push({ cell: randomVal, state: "clickedFalse" });
     }
   }
 
-  //   console.log(matrix);
+  console.log(matrix);
   return matrix;
 }
 

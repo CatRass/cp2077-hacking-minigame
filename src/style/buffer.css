@@ -1,0 +1,16 @@
+#bufferDisplay {
+  background-color: var(--background);
+  font-family: Rajdhani;
+  text-transform: uppercase;
+
+  grid-area: bufferDisplay;
+}
+
+#bufferDisplay > #title {
+  color: var(--foreground);
+}
+
+#bufferInput {
+  padding: 0.3rem;
+  color: var(--select);
+}

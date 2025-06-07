@@ -1,0 +1,21 @@
+#sequenceDisplay {
+  background-color: var(--background);
+
+  font-family: Rajdhani;
+  text-transform: uppercase;
+
+  grid-area: sequenceDisplay;
+}
+
+#sequenceDisplay > #title {
+  color: var(--foreground);
+}
+
+.codeDisplay {
+  color: white;
+  margin-right: 0.5rem;
+}
+
+#sequences {
+  width: 50%;
+}

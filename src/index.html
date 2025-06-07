@@ -7,23 +7,37 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <link rel="stylesheet" href="./style/index.css" />
+    <link rel="stylesheet" href="./style/matrix.css" />
+    <link rel="stylesheet" href="./style/sequence.css" />
+    <link rel="stylesheet" href="./style/buffer.css" />
   </head>
 
   <body>
-    <div x-data="{genData:generateData(), currentlyHovering:''}">
-      <button x-on:click="genData=generateData()">Restart</button>
+    <div id="app" x-data="{genData:generateData(), currentlyHovering:''}">
+      <div id="btnDisplay">
+        <button id="refreshButton" x-on:click="genData=generateData()">
+          Restart
+        </button>
+      </div>
+
+      <!-- Display for Button -->
+      <div id="breachTime">
+        <span>Breach Time Remaning</span>
+      </div>
+
       <!-- Code matrix is 6x6 -->
-      <table id="codeMatrix">
-        <template x-for="row in 6">
-          <tr>
-            <template x-for="column in 6">
-              <!-- 
+      <div id="matrixDisplay">
+        <table id="codeMatrix">
+          <template x-for="row in 6">
+            <tr>
+              <template x-for="column in 6">
+                <!-- 
                 This horribleness is courtesy of the Alpine.js maintainers, 
                 who to my knowledge think indexing from 1 in loops is normal
               -->
-              <th
-                x-text="genData['matrix'][row-1][column-1]['cell']"
-                x-on:click="
+                <th
+                  x-text="genData['matrix'][row-1][column-1]['cell']"
+                  x-on:click="
                     genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
                     (
                         clickedCode(genData['matrix'][row-1][column-1], row-1, column-1),
@@ -32,26 +46,40 @@
                     :
                     {}
                 "
-                x-on:mouseover="currentlyHovering=genData['matrix'][row-1][column-1]['cell']"
-                x-on:mouseleave="currentlyHovering=''"
-                x-bind:class="genData['matrix'][row-1][column-1]['state']"
-                class="unselectable"
-              ></th>
-            </template>
-          </tr>
-        </template>
-      </table>
-      <div id="sequenceDisplay">
-        <span>Sequence Required to Upload</span>
-        <br />
-        <template x-for="codeIndex in genData['codes'].length">
-          <div><span x-text="genData['codes'][codeIndex-1]"></span> <br /></div>
-        </template>
+                  x-on:mouseover="currentlyHovering=genData['matrix'][row-1][column-1]['cell']"
+                  x-on:mouseleave="currentlyHovering=''"
+                  x-bind:class="genData['matrix'][row-1][column-1]['state']"
+                  class="unselectable"
+                ></th>
+              </template>
+            </tr>
+          </template>
+        </table>
       </div>
+
+      <!-- Display for Buffer -->
       <div id="bufferDisplay">
-        <span>BUFFER</span>
+        <span id="title">Buffer</span>
         <br />
-        <span x-text="currentlyHovering"></span>
+        <span id="bufferInput" x-text="currentlyHovering"></span>
+      </div>
+
+      <!-- Display for Sequences -->
+      <div id="sequenceDisplay">
+        <span id="title">Sequence Required to Upload</span>
+        <br />
+        <div id="sequences">
+          <template x-for="codeIndex in genData['codes'].length">
+            <div class="sequence">
+              <template x-for="code in genData['codes'][codeIndex-1].length">
+                <span
+                  class="codeDisplay"
+                  x-text="genData['codes'][codeIndex-1][code-1]"
+                ></span>
+              </template>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
   </body>
