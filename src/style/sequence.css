@@ -31,15 +31,17 @@
   margin-right: 0.5rem;
 }
 
-#sequences,
-#rewards {
-  margin-left: 0.5rem;
+.sequence,
+.reward {
+  margin-bottom: 1rem;
 }
 
-#sequences {
+#sequenceList {
+  margin-left: 0.5rem;
   grid-area: sequenceCodes;
 }
 
-#rewards {
+#rewardList {
+  margin-left: 0.5rem;
   grid-area: sequenceRewards;
 }
