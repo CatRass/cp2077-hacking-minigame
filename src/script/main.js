@@ -2,7 +2,7 @@ function rand(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
 
-var codePool = ["E9", "BD", "1C", "55", "7A"];
+var codePool = ["E9", "BD", "1C", "55", "7A", "FF"];
 var rewardPool = [
   ["Basic Datamine", "Datamine_V1", "Ice Pick"],
   ["Advanced Datamine", "Datamine_V2", "Neutralize Malware"],
