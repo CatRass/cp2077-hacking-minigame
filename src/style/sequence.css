@@ -5,18 +5,36 @@
   text-transform: uppercase;
 
   grid-area: sequenceDisplay;
+
+  display: grid;
+  grid-template-areas:
+    "sequenceTitle sequenceTitle"
+    "sequenceCodes sequenceRewards";
+  grid-template-rows: 20% 80%;
 }
 
 #sequenceDisplay > #title {
   color: var(--foreground);
+  grid-area: sequenceTitle;
+  margin-left: 0.5rem;
 }
 
-.codeDisplay {
+.codeDisplay,
+.rewardDisplay {
   color: white;
   margin-right: 0.5rem;
 }
 
-#sequences {
+#sequences,
+#rewards {
   width: 50%;
   margin-left: 0.5rem;
+}
+
+#sequences {
+  grid-area: sequenceCodes;
+}
+
+#rewards {
+  grid-area: sequenceRewards;
 }

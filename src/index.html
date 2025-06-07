@@ -67,16 +67,17 @@
       <!-- Display for Sequences -->
       <div id="sequenceDisplay">
         <span id="title">Sequence Required to Upload</span>
-        <br />
 
         <!-- Display with Sequences -->
         <div id="sequences">
           <template x-for="codeIndex in genData['codes'].length">
             <div class="sequence">
-              <template x-for="code in genData['codes'][codeIndex-1].length">
+              <template
+                x-for="code in genData['codes'][codeIndex-1]['codeValue'].length"
+              >
                 <span
                   class="codeDisplay unselectable"
-                  x-text="genData['codes'][codeIndex-1][code-1]"
+                  x-text="genData['codes'][codeIndex-1]['codeValue'][code-1]"
                 ></span>
               </template>
             </div>
@@ -84,7 +85,16 @@
         </div>
 
         <!-- Dispay with Rewards -->
-        <div id="rewards"></div>
+        <div id="rewards">
+          <template x-for="rewardIndex in genData['codes'].length">
+            <div class="reward">
+              <span
+                class="rewardDisplay unselectable"
+                x-text="genData['codes'][rewardIndex-1]['rewardValue']"
+              ></span>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
   </body>
