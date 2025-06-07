@@ -5,17 +5,16 @@ function rand(min, max) {
 var pool = ["E9", "BD", "1C", "55", "7A"];
 
 // Function to generate code and click matrix
-function generateMatrix() {
-  var matrix = [];
+function generateMatrix(codes) {
+  var matrix = new Array(6).fill(Array(6));
 
   for (let row = 0; row < 6; row++) {
-    matrix.push([]);
     // Each matrix entry stores the cell value and it's state.
     // State is between 'clickedTrue' and 'clickedFalse' (default)
     for (let col = 0; col < 6; col++) {
       randomIndex = rand(0, pool.length);
       randomVal = pool[randomIndex];
-      matrix[row].push({ cell: randomVal, state: "clickedFalse" });
+      matrix[row][col] = { cell: randomVal, state: "clickedFalse" };
     }
   }
 
@@ -44,7 +43,7 @@ function generateCodes() {
 
 function generateData() {
   generatedCodes = generateCodes();
-  generatedMatrix = generateMatrix();
+  generatedMatrix = generateMatrix(generatedCodes);
 
   returnObj = {
     matrix: generatedMatrix,
