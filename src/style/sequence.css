@@ -19,6 +19,12 @@
   margin-left: 0.5rem;
 }
 
+.codeDisplay:hover {
+  cursor: pointer;
+  box-shadow: 0 0 0 3px var(--select);
+  color: var(--select);
+}
+
 .codeDisplay,
 .rewardDisplay {
   color: white;
@@ -27,7 +33,6 @@
 
 #sequences,
 #rewards {
-  width: 50%;
   margin-left: 0.5rem;
 }
 

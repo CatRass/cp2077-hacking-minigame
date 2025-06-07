@@ -4,9 +4,9 @@ function rand(min, max) {
 
 var codePool = ["E9", "BD", "1C", "55", "7A"];
 var rewardPool = [
-  ["Basic Datamine"],
-  ["Advanced Datamine"],
-  ["Expert Datamine"],
+  ["Basic Datamine", "Datamine_V1", "Ice Pick"],
+  ["Advanced Datamine", "Datamine_V2", "Neutralize Malware"],
+  ["Expert Datamine", "Datamine_V3", "Datamine: Copy Malware"],
 ];
 
 // Function to generate code and click matrix

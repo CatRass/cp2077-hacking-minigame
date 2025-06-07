@@ -41,7 +41,9 @@
                     genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
                     (
                         clickedCode(genData['matrix'][row-1][column-1], row-1, column-1),
-                        genData['matrix'][row-1][column-1]['state']='clickedTrue'
+                        genData['matrix'][row-1][column-1]['state']='clickedTrue',
+                        genData['matrix'][row-1][column-1]['cell']='[ ]'
+
                     )
                     :
                     {}
@@ -78,6 +80,8 @@
                 <span
                   class="codeDisplay unselectable"
                   x-text="genData['codes'][codeIndex-1]['codeValue'][code-1]"
+                  x-on:mouseover="currentlyHovering=genData['codes'][codeIndex-1]['codeValue'][code-1]"
+                  x-on:mouseleave="currentlyHovering=''"
                 ></span>
               </template>
             </div>
