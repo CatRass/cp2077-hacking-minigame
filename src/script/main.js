@@ -55,6 +55,7 @@ function generateData() {
   returnObj = {
     matrix: generatedMatrix,
     codes: generatedCodes,
+    buffer: [],
   };
 
   console.debug(returnObj);
