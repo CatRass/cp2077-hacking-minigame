@@ -25,7 +25,8 @@ function generateMatrix(codes) {
   }
 
   // console.log(matrix);
-  return matrix;
+  // TODO: Calculate value of "bufferLen" when generating puzzle
+  return { matrix: matrix, bufferLen: 4 };
 }
 
 function generateCodes() {
@@ -53,9 +54,9 @@ function generateData() {
   generatedMatrix = generateMatrix(generatedCodes);
 
   returnObj = {
-    matrix: generatedMatrix,
+    matrix: generatedMatrix["matrix"],
     codes: generatedCodes,
-    buffer: [],
+    buffer: new Array(generatedMatrix["bufferLen"]),
   };
 
   console.debug(returnObj);

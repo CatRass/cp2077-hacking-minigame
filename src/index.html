@@ -14,9 +14,12 @@
   </head>
 
   <body>
-    <div id="app" x-data="{genData:generateData()}">
+    <div id="app" x-data="{genData:generateData(), currBuffer:0}">
       <div id="btnDisplay">
-        <button id="refreshButton" x-on:click="genData=generateData()">
+        <button
+          id="refreshButton"
+          x-on:click="genData=generateData(); currBuffer=0"
+        >
           Restart
         </button>
       </div>
@@ -39,32 +42,39 @@
                 <th
                   x-text="genData['matrix'][row-1][column-1]['cell']"
                   x-on:click="
-                    genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
+                    genData['matrix'][row-1][column-1]['state'] != 'clickedTrue'
+                    &&
+                    currBuffer < genData['buffer'].length ?
                     (
                         clickedCode(genData['matrix'][row-1][column-1], row-1, column-1),
                         genData['matrix'][row-1][column-1]['state']='clickedTrue',
-                        genData['buffer'].pop(),
-                        genData['buffer'].push(genData['matrix'][row-1][column-1]['cell']),
+                        genData['buffer'][currBuffer] = genData['matrix'][row-1][column-1]['cell'],
+                        currBuffer++,
                         genData['matrix'][row-1][column-1]['cell']='[ ]'
                     )
                     :
                     {}
-                "
+                  "
                   x-on:mouseover="
-                    genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
+                    genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' 
+                    &&
+                    currBuffer < genData['buffer'].length ?
                     (
-                      genData['buffer'].push(genData['matrix'][row-1][column-1]['cell'])
+                      genData['buffer'][currBuffer] = genData['matrix'][row-1][column-1]['cell']
                     )
                     :
                     {}
-                    "
+                  "
                   x-on:mouseleave="
-                  genData['matrix'][row-1][column-1]['state'] != 'clickedTrue' ?
+                  genData['matrix'][row-1][column-1]['state'] != 'clickedTrue'
+                  &&
+                  currBuffer < genData['buffer'].length ?
                     (
-                      genData['buffer'].pop()
+                      genData['buffer'][currBuffer] = ''
                     )
                     :
-                    {}"
+                    {}
+                  "
                   x-bind:class="genData['matrix'][row-1][column-1]['state']"
                   class="unselectable"
                 ></th>
@@ -99,8 +109,13 @@
                 <span
                   class="codeDisplay unselectable"
                   x-text="genData['codes'][codeIndex-1]['codeValue'][code-1]"
-                  x-on:mouseover="genData['buffer'].push(genData['codes'][codeIndex-1]['codeValue'][code-1])"
-                  x-on:mouseleave="genData['buffer'].pop()"
+                  x-on:mouseover="
+                  currBuffer < genData['buffer'].length ?
+                  (genData['buffer'][currBuffer] = genData['codes'][codeIndex-1]['codeValue'][code-1]):{}"
+                  x-on:mouseleave="
+                  currBuffer < genData['buffer'].length ?
+                  (genData['buffer'][currBuffer] = ''):{}
+                  "
                 ></span>
               </template>
             </div>
